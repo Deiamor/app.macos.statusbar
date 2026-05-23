@@ -98,7 +98,8 @@ final class AppController: NSObject {
         txt(String(format: " %3.0f%%", monitor.cpuUsage))
         txt("  ")
         icon("memorychip")
-        txt(" \(monitor.formatBytes(monitor.memoryUsed))")
+        let memPct = monitor.memoryTotal > 0 ? Double(monitor.memoryUsed) / Double(monitor.memoryTotal) * 100 : 0
+        txt(String(format: " %3.0f%%", memPct))
         txt("  ")
         icon("internaldrive")
         txt(String(format: " %3.0f%%", diskPct))
